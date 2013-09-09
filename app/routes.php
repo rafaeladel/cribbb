@@ -48,3 +48,23 @@ Route::get('/', function(){
 	return $result;
 
 });
+
+Route::get('savecomment', function(){
+	$user = new User(array(
+				'username' => 'another',
+				'email' => 'rere@ewe.com',
+				'password' => '123456',
+				'password_confirmation' => '123456',
+			));
+	$post = new Post(array('body' => 'this is test post'));
+	$comment = new Comment(array('body' => 'This is comment body'));
+
+	if($user->save()){
+		$user->posts()->save($post);
+		return $post->comments()->save($comment);
+	} else {
+		return $user->errors()->all()[0];
+	}
+});
+
+Route::resource('user', 'UserController');

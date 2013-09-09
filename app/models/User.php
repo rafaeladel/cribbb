@@ -6,6 +6,8 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Ardent implements UserInterface, RemindableInterface {
 
+	protected $fillable = array('username', 'email', 'password', 'password_confirmation');
+
 	protected $table = 'users';
 
 	protected $hidden = array('password');
