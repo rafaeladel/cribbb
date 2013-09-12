@@ -5,16 +5,23 @@ class CommentTest extends TestCase {
 	
 	public function testRequiredBody(){
 		$comment = new Comment();
-		$comment->body = "this is body";
+		$comment->body = "this is comment body";
 		// $comment->post_id = 2;
 
 		$post = new Post();
-		$post->body = "teteteT";
+		$post->body = "This is post body";
 		$post->user_id = 2;
+		$post->comments()->add($comment);
 
-		// Validator::shouldReceive('make')->once()->andReturn(true);
 		$this->assertTrue($post->save());
+
+		//This fails, Returns $comment object
 		$this->assertTrue($post->comments()->save($comment));
+
+
+
+
+		
 		// $this->assertTrue($comment->save());
 		// $this->assertCount(1, $comment->errors);
 		// $this->assertEquals($comment->errors->first(), "ww");
