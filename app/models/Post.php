@@ -1,6 +1,7 @@
 <?php
 use LaravelBook\Ardent\Ardent;
-class Post extends Ardent {
+
+class Post extends BaseModel {
 	protected $table = 'posts';
 	public $fillable = array('body');
 

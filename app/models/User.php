@@ -4,7 +4,7 @@ use LaravelBook\Ardent\Ardent;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Ardent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	protected $fillable = array('username', 'email', 'password', 'password_confirmation');
 
@@ -26,7 +26,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 			'password_confirmation' => 'password',
 		);
 
-	public $autoPurgeRedundantAttributes = true;
+	public $removeConfirmationFields = true;
 
 	public function posts(){
 		return $this->hasMany('Post');

@@ -1,7 +1,6 @@
 <?php
-use LaravelBook\Ardent\Ardent;
 
-class Comment extends Ardent {
+class Comment extends BaseModel {
 	protected $table = 'comments';
 	public $fillable = array('body');
 
